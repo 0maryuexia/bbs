@@ -1,9 +1,44 @@
 <%@ page language="java" import="java.util.*" contentType="text/html; charset=GB2312" %>
-<%@ page import="java.sql.Connection" %>
+<%@ page import="java.sql.*,javaClass.*,java.io.*" %>
+<%--<%@ page import="com.bjsxt.bbs.Article" %>--%>
 <%!
-  private void tree(Connection conn , int id, int grade){
+  private void tree(List<Article> articles, Connection conn , int id, int grade){
+    String sql = "select * from Article where pid = " + id;
+    Statement stmt = DB.createStmt(conn);
+    ResultSet rs = DB.executeQuery(stmt,sql);
+    try {
+      while (rs.next()){
+          Article a = new Article();
+  //        a.initFromRs(rs);
+  //        a.setGrade()
+        a.setId(rs.getInt("id"));
+        a.setPid(rs.getInt("pid"));
+        a.setRootid(rs.getInt("rootid"));
+        a.setTitle(rs.getString("title"));
+        a.setLeaf(rs.getInt("isLeaf") == 0 ? true:false);
+        a.setpDate(rs.getTimestamp("pdate"));
+        a.setGrade(grade);
+      articles.add(a);
+      if (a.isLeaf()){
+          tree(articles,conn,a.getId(),grade+1);
+      }
 
+      }
+    } catch (SQLException e) {
+      e.printStackTrace();
+    }
+    //final {
+//        DB.close(rs);
+//       // DB.close(stmt);
+//    }
   }
+%>
+
+<%
+  List<Article> articles = new ArrayList<Article>();
+  Connection conn = DB.getConn();
+  tree(articles, conn, 0, 0);
+  DB.close(conn);
 %>
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
 <html>
@@ -18,6 +53,10 @@
 <body>
 <table border="0" cellpadding="0" cellspacing="0" width="100%">
   <tbody>
+  <%
+    for (Iterator<Article> it = articles.iterator(); it.hasNext();){
+        Article a = it.next();
+  %>
   <tr>
     <td width="140"><a href="http://bbs.chinajavaworld.com/index.jspa"><img src="../images/header-left.gif" alt="Java|Java世界_中文论坛|ChinaJavaWorld技术论坛" border="0"></a></td>
     <td><img src="../images/header-stretch.gif" alt="" border="0" height="57" width="100%"></td>
@@ -108,6 +147,9 @@
               <td class="jive-last" nowrap="nowrap" width="1%"><div class="jive-last-post"> 2007-9-13 上午8:40 <br>
                 by: <a href="http://bbs.chinajavaworld.com/thread.jspa?messageID=780172#780172" title="downing114" style="">downing114 &#187;</a> </div></td>
             </tr>
+            <%
+              }
+            %>
             </tbody>
           </table>
         </div>

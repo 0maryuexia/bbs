@@ -1,17 +1,31 @@
 package javaClass;
 
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.Date;
 
 /**
  * Created by Administrator on 2017/6/14 0014.
  */
-public class article {
+public class Article {
 
+    private int id;
+    private int pid;
     private int rootid;
     private String title;
     private String cont;
     private Date pDate;
     private boolean isLeaf;
+    private int grade;
+
+    public void setGrade(int grade) {
+        this.grade = grade;
+    }
+
+    public int getGrade() {
+
+        return grade;
+    }
 
     public int getId() {
         return id;
@@ -41,9 +55,6 @@ public class article {
         return isLeaf;
     }
 
-    private int id;
-    private int pid;
-
     public void setId(int id) {
         this.id = id;
     }
@@ -72,5 +83,21 @@ public class article {
         isLeaf = leaf;
     }
 
+
+  //  public void initFromRs(ResultSet rs){
+//        setId(rs.getInt("id"));
+//        setRootid(rs.getInt("rootid"));
+//        setTitle(rs.getString("title"));
+//        setLeaf(rs.getBoolean("isleaf") == 0 ? true:false);
+//        setpDate(rs.getTimestamp("pdate"));
+//        setCont(rs.getNString("cont"));
+//
+//        try {
+//            setPid(rs.getInt("pid"));
+//        } catch (SQLException e) {
+//            e.printStackTrace();
+//        }
+//
+//    }
 
 }
