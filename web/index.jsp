@@ -8,9 +8,10 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
   <head>
-    <title>$Title$</title>
+    <title>首页</title>
   </head>
   <body>
-  $END$
+  这里是首页<br>
+  <a  href="jsp/article.jsp">GO_BBS</a>
   </body>
 </html>
