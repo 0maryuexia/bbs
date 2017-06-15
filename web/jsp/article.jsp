@@ -20,7 +20,7 @@
         a.setGrade(grade);
       articles.add(a);
       if (a.isLeaf()){
-          tree(articles,conn,a.getId(),grade+1);
+          tree(articles,conn,a.getId(),grade + 1 );
       }
 
       }
@@ -53,10 +53,7 @@
 <body>
 <table border="0" cellpadding="0" cellspacing="0" width="100%">
   <tbody>
-  <%
-    for (Iterator<Article> it = articles.iterator(); it.hasNext();){
-        Article a = it.next();
-  %>
+
   <tr>
     <td width="140"><a href="http://bbs.chinajavaworld.com/index.jspa"><img src="../images/header-left.gif" alt="Java|Java世界_中文论坛|ChinaJavaWorld技术论坛" border="0"></a></td>
     <td><img src="../images/header-stretch.gif" alt="" border="0" height="57" width="100%"></td>
@@ -79,6 +76,7 @@
   <div class="jive-buttons">
     <table summary="Buttons" border="0" cellpadding="0" cellspacing="0">
       <tbody>
+
       <tr>
         <td class="jive-icon"><a href="http://bbs.chinajavaworld.com/post%21default.jspa?forumID=20"><img src="../images/post-16x16.gif" alt="发表新主题" border="0" height="16" width="16"></a></td>
         <td class="jive-icon-label"><a id="jive-post-thread" href="http://bbs.chinajavaworld.com/post%21default.jspa?forumID=20">发表新主题</a> <a href="http://bbs.chinajavaworld.com/forum.jspa?forumID=20&amp;isBest=1"></a></td>
@@ -89,14 +87,18 @@
   <br>
   <table border="0" cellpadding="3" cellspacing="0" width="100%">
     <tbody>
+
     <tr valign="top">
       <td><span class="nobreak"> 页:
           1,316 - <span class="jive-paginator"> [ <a href="http://bbs.chinajavaworld.com/forum.jspa?forumID=20&amp;start=0&amp;isBest=0">上一页</a> | <a href="http://bbs.chinajavaworld.com/forum.jspa?forumID=20&amp;start=0&amp;isBest=0" class="">1</a> <a href="http://bbs.chinajavaworld.com/forum.jspa?forumID=20&amp;start=25&amp;isBest=0" class="jive-current">2</a> <a href="http://bbs.chinajavaworld.com/forum.jspa?forumID=20&amp;start=50&amp;isBest=0" class="">3</a> <a href="http://bbs.chinajavaworld.com/forum.jspa?forumID=20&amp;start=75&amp;isBest=0" class="">4</a> <a href="http://bbs.chinajavaworld.com/forum.jspa?forumID=20&amp;start=100&amp;isBest=0" class="">5</a> <a href="http://bbs.chinajavaworld.com/forum.jspa?forumID=20&amp;start=125&amp;isBest=0" class="">6</a> | <a href="http://bbs.chinajavaworld.com/forum.jspa?forumID=20&amp;start=50&amp;isBest=0">下一页</a> ] </span> </span> </td>
     </tr>
     </tbody>
+
   </table>
+
   <table border="0" cellpadding="0" cellspacing="0" width="100%">
     <tbody>
+
     <tr valign="top">
       <td width="99%"><div class="jive-thread-list">
         <div class="jive-table">
@@ -113,6 +115,11 @@
             </tr>
             </thead>
             <tbody>
+            <!-- ------------------------------------------------------------------------------------------------------------------------------------------------ -->
+            <%
+              for (Iterator<Article> it = articles.iterator(); it.hasNext();){
+                Article a = it.next();
+            %>
             <tr class="jive-even">
               <td class="jive-first" nowrap="nowrap" width="1%"><div class="jive-bullet"> <img src="../images/read-16x16.gif" alt="已读" border="0" height="16" width="16">
                 <!-- div-->
@@ -123,30 +130,30 @@
 
 
                 &nbsp;</td>
-              <td class="jive-thread-name" width="95%"><a id="jive-thread-1" href="http://bbs.chinajavaworld.com/thread.jspa?threadID=744236&amp;tstart=25">初学java遇一难题！！望大家能帮忙一下 谢谢了</a></td>
-              <td class="jive-author" nowrap="nowrap" width="1%"><span class=""> <a href="http://bbs.chinajavaworld.com/profile.jspa?userID=226030">fei870407</a> </span></td>
+              <td class="jive-thread-name" width="95%"><a id="jive-thread-1" href="http://bbs.chinajavaworld.com/thread.jspa?threadID=744236&amp;tstart=25"><%= a.getTitle() %></a></td>
+              <td class="jive-author" nowrap="nowrap" width="1%"><span class=""> <a href="http://bbs.chinajavaworld.com/profile.jspa?userID=226030">作者AA</a> </span></td>
               <td class="jive-view-count" width="1%"> 104</td>
               <td class="jive-msg-count" width="1%"> 5</td>
-              <td class="jive-last" nowrap="nowrap" width="1%"><div class="jive-last-post"> 2007-9-13 上午9:31 <br>
+              <td class="jive-last" nowrap="nowrap" width="1%"><div class="jive-last-post"> <%= a.getpDate()%> 上午9:31 <br>
                 by: <a href="http://bbs.chinajavaworld.com/thread.jspa?messageID=780182#780182" title="jingjiangjun" style="">jingjiangjun &#187;</a> </div></td>
             </tr>
-            <tr class="jive-odd">
-              <td class="jive-first" nowrap="nowrap" width="1%"><div class="jive-bullet"> <img src="../images/read-16x16.gif" alt="已读" border="0" height="16" width="16">
-                <!-- div-->
-              </div></td>
-              <td nowrap="nowrap" width="1%">&nbsp;
+            <%--<tr class="jive-odd">--%>
+              <%--<td class="jive-first" nowrap="nowrap" width="1%"><div class="jive-bullet"> <img src="../images/read-16x16.gif" alt="已读" border="0" height="16" width="16">--%>
+                <%--<!-- div-->--%>
+              <%--</div></td>--%>
+              <%--<td nowrap="nowrap" width="1%">&nbsp;--%>
 
 
 
 
-                &nbsp;</td>
-              <td class="jive-thread-name" width="95%"><a id="jive-thread-2" href="http://bbs.chinajavaworld.com/thread.jspa?threadID=744234&amp;tstart=25">请 兄弟们指点下那里 错误，，，</a></td>
-              <td class="jive-author" nowrap="nowrap" width="1%"><span class=""> <a href="http://bbs.chinajavaworld.com/profile.jspa?userID=226028">403783154</a> </span></td>
-              <td class="jive-view-count" width="1%"> 52</td>
-              <td class="jive-msg-count" width="1%"> 2</td>
-              <td class="jive-last" nowrap="nowrap" width="1%"><div class="jive-last-post"> 2007-9-13 上午8:40 <br>
-                by: <a href="http://bbs.chinajavaworld.com/thread.jspa?messageID=780172#780172" title="downing114" style="">downing114 &#187;</a> </div></td>
-            </tr>
+                <%--&nbsp;</td>--%>
+              <%--<td class="jive-thread-name" width="95%"><a id="jive-thread-2" href="http://bbs.chinajavaworld.com/thread.jspa?threadID=744234&amp;tstart=25">请 兄弟们指点下那里 错误，，，</a></td>--%>
+              <%--<td class="jive-author" nowrap="nowrap" width="1%"><span class=""> <a href="http://bbs.chinajavaworld.com/profile.jspa?userID=226028">403783154</a> </span></td>--%>
+              <%--<td class="jive-view-count" width="1%"> 52</td>--%>
+              <%--<td class="jive-msg-count" width="1%"> 2</td>--%>
+              <%--<td class="jive-last" nowrap="nowrap" width="1%"><div class="jive-last-post"> 2007-9-13 上午8:40 <br>--%>
+                <%--by: <a href="http://bbs.chinajavaworld.com/thread.jspa?messageID=780172#780172" title="downing114" style="">downing114 &#187;</a> </div></td>--%>
+            <%--</tr>--%>
             <%
               }
             %>

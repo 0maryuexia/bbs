@@ -84,20 +84,21 @@ public class Article {
     }
 
 
-  //  public void initFromRs(ResultSet rs){
-//        setId(rs.getInt("id"));
-//        setRootid(rs.getInt("rootid"));
-//        setTitle(rs.getString("title"));
-//        setLeaf(rs.getBoolean("isleaf") == 0 ? true:false);
-//        setpDate(rs.getTimestamp("pdate"));
-//        setCont(rs.getNString("cont"));
-//
-//        try {
-//            setPid(rs.getInt("pid"));
-//        } catch (SQLException e) {
-//            e.printStackTrace();
-//        }
-//
-//    }
+    public void initFromRs(ResultSet rs){
+
+
+        try {
+            setPid(rs.getInt("pid"));
+            setId(rs.getInt("id"));
+            setRootid(rs.getInt("rootid"));
+            setTitle(rs.getString("title"));
+            setLeaf(rs.getInt("isleaf") == 0 ? true:false);
+            setpDate(rs.getTimestamp("pdate"));
+            setCont(rs.getNString("cont"));
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+    }
 
 }
