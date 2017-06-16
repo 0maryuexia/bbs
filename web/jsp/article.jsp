@@ -2,35 +2,26 @@
 <%@ page import="java.sql.*,javaClass.*,java.io.*" %>
 <%--<%@ page import="com.bjsxt.bbs.Article" %>--%>
 <%!
-  private void tree(List<Article> articles, Connection conn , int id, int grade){
-    String sql = "select * from Article where pid = " + id;
+  private void tree(List<Article> articles, Connection conn, int id, int grade) {
+    String sql = "select * from article where pid = " + id;
     Statement stmt = DB.createStmt(conn);
-    ResultSet rs = DB.executeQuery(stmt,sql);
+    ResultSet rs = DB.executeQuery(stmt, sql);
     try {
-      while (rs.next()){
-          Article a = new Article();
-  //        a.initFromRs(rs);
-  //        a.setGrade()
-        a.setId(rs.getInt("id"));
-        a.setPid(rs.getInt("pid"));
-        a.setRootid(rs.getInt("rootid"));
-        a.setTitle(rs.getString("title"));
-        a.setLeaf(rs.getInt("isLeaf") == 0 ? true:false);
-        a.setpDate(rs.getTimestamp("pdate"));
+      while(rs.next()) {
+        Article a = new Article();
+        a.initFromRs(rs);
         a.setGrade(grade);
-      articles.add(a);
-      if (a.isLeaf()){
-          tree(articles,conn,a.getId(),grade + 1 );
-      }
-
+        articles.add(a);
+        if(!a.isLeaf()) {
+          tree(articles, conn, a.getId(), grade + 1);
+        }
       }
     } catch (SQLException e) {
       e.printStackTrace();
+    } finally {
+      DB.close(rs);
+      DB.close(stmt);
     }
-    //final {
-//        DB.close(rs);
-//       // DB.close(stmt);
-//    }
   }
 %>
 
@@ -130,7 +121,7 @@
 
 
                 &nbsp;</td>
-              <td class="jive-thread-name" width="95%"><a id="jive-thread-1" href="http://bbs.chinajavaworld.com/thread.jspa?threadID=744236&amp;tstart=25"><%= a.getTitle() %></a></td>
+              <td class="jive-thread-name" width="95%"><a id="jive-thread-1" href="/jsp/article_detail.jsp?id=<%= a.getId() %>"><%= a.getTitle() %></a></td>
               <td class="jive-author" nowrap="nowrap" width="1%"><span class=""> <a href="http://bbs.chinajavaworld.com/profile.jspa?userID=226030">×÷ÕßAA</a> </span></td>
               <td class="jive-view-count" width="1%"> 104</td>
               <td class="jive-msg-count" width="1%"> 5</td>

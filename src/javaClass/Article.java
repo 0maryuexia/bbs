@@ -63,7 +63,7 @@ public class Article {
         this.pid = pid;
     }
 
-    public void setRootid(int rootid) {
+    public void setRootId(int rootid) {
         this.rootid = rootid;
     }
 
@@ -75,7 +75,7 @@ public class Article {
         this.cont = cont;
     }
 
-    public void setpDate(Date pDate) {
+    public void setPdate(Date pDate) {
         this.pDate = pDate;
     }
 
@@ -84,21 +84,19 @@ public class Article {
     }
 
 
-    public void initFromRs(ResultSet rs){
-
-
+    public void initFromRs(ResultSet rs) {
         try {
-            setPid(rs.getInt("pid"));
             setId(rs.getInt("id"));
-            setRootid(rs.getInt("rootid"));
+            setPid(rs.getInt("pid"));
+            setRootId(rs.getInt("rootid"));
             setTitle(rs.getString("title"));
-            setLeaf(rs.getInt("isleaf") == 0 ? true:false);
-            setpDate(rs.getTimestamp("pdate"));
-            setCont(rs.getNString("cont"));
+            setLeaf(rs.getInt("isleaf") == 0 ? true : false);
+            setPdate(rs.getTimestamp("pdate"));
+            setCont(rs.getString("cont"));
+            setGrade(0);
         } catch (SQLException e) {
             e.printStackTrace();
         }
-
     }
 
 }
