@@ -16,17 +16,17 @@ try {
   }
 
   Article a = null;
-  Connection conn = DB.getConn();
+  Connection conn = DB1.getConn();
   String sql = "select * from article where id = " + id;
-  Statement stmt = DB.createStmt(conn);
-  ResultSet rs = DB.executeQuery(stmt,sql);
+  Statement stmt = DB1.createStmt(conn);
+  ResultSet rs = DB1.executeQuery(stmt,sql);
   if(rs.next()){
   a = new Article();
   a.initFromRs(rs);
   }
-  DB.close(rs);
-  DB.close(stmt);
-  DB.close(conn);
+  DB1.close(rs);
+  DB1.close(stmt);
+  DB1.close(conn);
 
   if (a == null){
 %>
@@ -72,7 +72,7 @@ try {
       <tbody>
         <tr>
           <td class="jive-icon"><a href="http://bbs.chinajavaworld.com/post%21reply.jspa?threadID=744236"><img src="../images/reply-16x16.gif" alt="回复本主题" border="0" height="16" width="16"></a></td>
-          <td class="jive-icon-label"><a id="jive-reply-thread" href="/jsp/reply.jsp">回复本主题</a> </td>
+          <td class="jive-icon-label"><a id="jive-reply-thread" href="/jsp/reply.jsp?id=<%=a.getId()%>&rootId=<%=a.getRootId()%>">回复本主题</a> </td>
         </tr>
       </tbody>
     </table>

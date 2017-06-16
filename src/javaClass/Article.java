@@ -35,7 +35,7 @@ public class Article {
         return pid;
     }
 
-    public int getRootid() {
+    public int getRootId() {
         return rootid;
     }
 

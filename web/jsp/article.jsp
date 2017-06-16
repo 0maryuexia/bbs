@@ -4,8 +4,8 @@
 <%!
   private void tree(List<Article> articles, Connection conn, int id, int grade) {
     String sql = "select * from article where pid = " + id;
-    Statement stmt = DB.createStmt(conn);
-    ResultSet rs = DB.executeQuery(stmt, sql);
+    Statement stmt = DB1.createStmt(conn);
+    ResultSet rs = DB1.executeQuery(stmt, sql);
     try {
       while(rs.next()) {
         Article a = new Article();
@@ -19,17 +19,17 @@
     } catch (SQLException e) {
       e.printStackTrace();
     } finally {
-      DB.close(rs);
-      DB.close(stmt);
+      DB1.close(rs);
+      DB1.close(stmt);
     }
   }
 %>
 
 <%
   List<Article> articles = new ArrayList<Article>();
-  Connection conn = DB.getConn();
+  Connection conn = DB1.getConn();
   tree(articles, conn, 0, 0);
-  DB.close(conn);
+  DB1.close(conn);
 %>
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
 <html>
