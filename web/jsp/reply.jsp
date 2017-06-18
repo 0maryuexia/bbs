@@ -15,6 +15,9 @@
     <link rel="stylesheet" type="text/css" href="../images/style.css" title="Integrated Styles">
     <script language="JavaScript" type="text/javascript" src="../images/global.js"></script>
     <link rel="alternate" type="application/rss+xml" title="RSS" href="http://bbs.chinajavaworld.com/rss/rssmessages.jspa?threadID=744236">
+    <!--     下面是控件     -->
+    <script src="../ckeditor/ckeditor.js"></script>
+    <!--      上面是控件    -->
 </head>
 <body>
 <table border="0" cellpadding="0" cellspacing="0" width="100%">
@@ -53,14 +56,23 @@
                                     <td class="jive-first" width="1%">
                                          <!--  表 单从这里开始-->
                                        <form action="replyDeal.jsp" method="post">
+                                           <input type="hidden" name="pid" value="<%=id %>"/>
+                                           <input type="hidden" name="rootId" value="<%=rootId %>"/>
 										   标题<input type="text" name = "title"><br /><br />
                                            <p> 内容</p>
-                                           <textarea rows="15" cols="80" name="cont"></textarea><br>
+                                           <textarea name="cont" id="editor1" rows="10" cols="80">
+                                                在这里输入要提交的内容！
+                                             </textarea>
+                                           <script>
+                                               // Replace the <textarea id="editor1"> with a CKEditor
+                                               // instance, using default configuration.
+                                               CKEDITOR.replace( 'editor1' );
+                                           </script>
                                            <input type="submit" value="提交"  />
                                        </form><!--  表 单从这里结束-->
                                     </td>
                                 </tr>
-                                     <td class="jive-last" width="99%"></td>
+
                                 </tbody>
                             </table>
                         </div>
