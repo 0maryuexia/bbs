@@ -15,11 +15,11 @@
 <%--String title = request.getParameter("title");--%>
 <%--String cont = request.getPathTranslated("cont");--%>
 
-<%--Connection conn = DB1.getConn();--%>
+<%--Connection conn = DB.getConn();--%>
 <%--boolean autoCommit =conn.getAutoCommit();--%>
 <%--conn.getAutoCommit(false);--%>
 <%--String sql = "insert into article values (null, ?, ?, ?, ?, now(), ?)";--%>
-<%--PreparedStatement pstmt = DB1.prepareStmt(conn,sql);--%>
+<%--PreparedStatement pstmt = DB.prepareStmt(conn,sql);--%>
 <%--pstmt.setInt(1, pid);--%>
 <%--pstmt.setInt(2, rootId);--%>
 <%--pstmt.setString(3, title);--%>
@@ -27,19 +27,19 @@
 <%--pstmt.setInt(5, 0);--%>
 <%--pstmt.executeUpdate();--%>
 
-<%--Statement stmt = DB1.createStmt(conn);--%>
+<%--Statement stmt = DB.createStmt(conn);--%>
 <%--stmt.executeUpdate(autoCommit);--%>
 <%--conn.commit();--%>
 <%--conn.setAutoCommit(autoCommit);--%>
-<%--DB1.close(pstmt);--%>
-<%--DB1.close(stmt);--%>
-<%--DB1.close(conn);--%>
+<%--DB.close(pstmt);--%>
+<%--DB.close(stmt);--%>
+<%--DB.close(conn);--%>
 <%--%>--%>
 <!-- 下面是复制↓ -->
 <%
     request.setCharacterEncoding("GBK");
 
-    int pid = Integer.parseInt(request.getParameter("pid"));
+   int pid = Integer.parseInt(request.getParameter("pid"));
     int rootId = Integer.parseInt(request.getParameter("rootId"));
 
 
@@ -47,14 +47,14 @@
     String title = request.getParameter("title");
     System.out.println("title="+title);
     String cont = request.getParameter("cont");
-    System.out.println("connt="+cont);
-    Connection conn = DB1.getConn();
+    System.out.println("cont="+cont);
+    Connection conn = DB.getConn();
 
     boolean autoCommit = conn.getAutoCommit();
     conn.setAutoCommit(false);
 
     String sql = "insert into article values (null, ?, ?, ?, ?, now(), ?)";
-    PreparedStatement pstmt = DB1.prepareStmt(conn, sql);
+    PreparedStatement pstmt = DB.prepareStmt(conn, sql);
     pstmt.setInt(1, pid);
     pstmt.setInt(2, rootId);
     pstmt.setString(3, title);
@@ -62,14 +62,14 @@
     pstmt.setInt(5, 0);
     pstmt.executeUpdate();
 
-    Statement stmt = DB1.createStmt(conn);
+    Statement stmt = DB.createStmt(conn);
     stmt.executeUpdate("update article set isleaf = 1 where id = " + pid);
 
     conn.commit();
     conn.setAutoCommit(autoCommit);
-    DB1.close(pstmt);
-    DB1.close(stmt);
-    DB1.close(conn);
+    DB.close(pstmt);
+    DB.close(stmt);
+    DB.close(conn);
 
 
 %>
