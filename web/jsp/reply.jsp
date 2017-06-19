@@ -56,13 +56,13 @@
                                     <td class="jive-first" width="1%">
                                          <!--  表 单从这里开始-->
                                        <form action="replyDeal.jsp" method="post">
-<<<<<<< HEAD
+
                                            <input type="hidden" name="pid" value="<%=id %>"/>
                                            <input type="hidden" name="rootId" value="<%=rootId %>"/>
-=======
+
                                            <input type="hidden" name="pid"value="<%= id%>"/>
                                            <input type="hidden" name="rootId"value="<%= rootId%>"/>
->>>>>>> origin/master
+
 										   标题<input type="text" name = "title"><br /><br />
                                            <p> 内容</p>
                                            <textarea name="cont" id="editor1" rows="10" cols="80">
