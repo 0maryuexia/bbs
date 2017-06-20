@@ -117,12 +117,9 @@
               <td class="jive-first" nowrap="nowrap" width="1%"><div class="jive-bullet"> <img src="../images/read-16x16.gif" alt="ÒÑ¶Á" border="0" height="16" width="16">
                 <!-- div-->
               </div></td>
-              <td nowrap="nowrap" width="1%">&nbsp;
-
-
-
-
-                &nbsp;</td>
+              <td nowrap="nowrap" width="1%">
+                <a href="delete.jsp?id=<%= a.getId()%>&isleaf=<%= a.isLeaf()%>&pid=<%= a.getPid()%>">É¾³ý</a>
+              </td>
               <td class="jive-thread-name" width="95%"><a id="jive-thread-1" href="/jsp/article_detail.jsp?id=<%= a.getId() %>"><%= a.getTitle() %></a></td>
               <td class="jive-author" nowrap="nowrap" width="1%"><span class=""> <a href="http://bbs.chinajavaworld.com/profile.jspa?userID=226030">×÷ÕßAA</a> </span></td>
               <td class="jive-view-count" width="1%"> 104</td>
