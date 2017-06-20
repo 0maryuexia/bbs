@@ -5,27 +5,47 @@
   Time: 下午 3:41
   To change this template use File | Settings | File Templates.
 --%>
-<%@ page contentType="text/html;charset=UTF-8" language="java" import="java.sql.*,javaClass" %>
+<%@ page contentType="text/html;charset=UTF-8" language="java" import="java.sql.*" %>
 <%@ page import="javaClass.DB" %>
 <%
+    request.setCharacterEncoding("GBK");
+    String action = request.getParameter("action");
     String title = request.getParameter("title");
     String cont = request.getParameter("cont");
-
-    if (title != null && cont != null) {
-        System.out.println("title=" + title);
-        System.out.println("cont=" + cont);
-        System.out.println("----------");
+    if (title != null && cont!= null) {
+        System.out.println(title);
+        System.out.println(cont);
         Connection conn = DB.getConn();
-        String sql = "insert into article values (null, '1', '1', "+title+", "+cont+", now(), '1')";
-        Statement stmt = DB.createStmt(conn);
-        try {
-            stmt.executeUpdate(sql);
 
-    }catch (SQLException e){
-        System.out.println("sql错误");
-    }finally {
+        boolean autoCommit = conn.getAutoCommit();
+        conn.setAutoCommit(false);
+
+        int rootId = -1;
+
+        String sql = "insert into article values (null, ?, ?, ?, ?, now(), ?)";
+        PreparedStatement pstmt = DB.prepareStmt(conn, sql, Statement.RETURN_GENERATED_KEYS);
+        pstmt.setInt(1, 0);
+        pstmt.setInt(2, rootId);
+        pstmt.setString(3, title);
+        pstmt.setString(4, cont);
+        pstmt.setInt(5, 0);
+        pstmt.executeUpdate();
+
+        ResultSet rsKey = pstmt.getGeneratedKeys();
+        rsKey.next();
+        rootId = rsKey.getInt(1);
+
+        Statement stmt = DB.createStmt(conn);
+        stmt.executeUpdate("update article set rootid = " + rootId + " where id = "	+ rootId);
+
+        conn.commit();
+        conn.setAutoCommit(autoCommit);
+        DB.close(pstmt);
         DB.close(stmt);
-        DB.close(conn);}
+        DB.close(conn);
+
+        response.sendRedirect("article.jsp");
+
     }
 %>
 <html>
