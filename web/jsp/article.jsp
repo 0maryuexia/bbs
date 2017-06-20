@@ -46,7 +46,7 @@
   <tbody>
 
   <tr>
-    <td width="140"><a href="http://bbs.chinajavaworld.com/index.jspa"><img src="../images/header-left.gif" alt="Java|Java世界_中文论坛|ChinaJavaWorld技术论坛" border="0"></a></td>
+    <td width="140"><a href="/jsp/article.jsp"><img src="../images/header-left.gif" alt="Java|Java世界_中文论坛|ChinaJavaWorld技术论坛" border="0"></a></td>
     <td><img src="../images/header-stretch.gif" alt="" border="0" height="57" width="100%"></td>
     <td width="1%"><img src="../images/header-right.gif" alt="" border="0"></td>
   </tr>
