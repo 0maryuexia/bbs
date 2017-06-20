@@ -12,7 +12,7 @@
     String action = request.getParameter("action");
     String title = request.getParameter("title");
     String cont = request.getParameter("cont");
-    if (title != null && cont != null) {
+    if (title != null && cont!= null) {
         System.out.println(title);
         System.out.println(cont);
         Connection conn = DB.getConn();
@@ -48,7 +48,6 @@
 
     }
 %>
-
 <html>
 <head>
     <title>创建新主题</title>
@@ -62,7 +61,7 @@
         <td width="1%"><img src="../images/header-right.gif" alt="" border="0"></td>
     </tr>
 </table><br />
-<form action="hosp.jsp" method="hosp">
+<form action="hosp.jsp" method="post">
     标题<input style="text" name="title"/>
     <p>内容</p>
     <textarea name="cont" id="editor1" rows="10" cols="80">

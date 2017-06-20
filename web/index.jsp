@@ -9,7 +9,7 @@
 <%
   System.out.println("访问者ip："+request.getRemoteAddr());
 
-  response.sendRedirect("jsp/article.jsp");
+  response.sendRedirect("/jsp/article.jsp");
 %>
 <html>
   <head>
