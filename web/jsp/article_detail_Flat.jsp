@@ -49,8 +49,7 @@
 <table border="0" cellpadding="0" cellspacing="0" width="100%">
     <tbody>
     <tr>
-        <td width="40%"><img src="../images/header-stretch.gif" alt="" border="0" height="57" width="100%">
-        </td>
+        <td width="40%"><img src="../images/header-stretch.gif" alt="" border="0" height="57" width="100%"></td>
         <td width="1%"><img src="../images/header-right.gif" alt="" height="57" border="0"></td>
     </tr>
     </tbody>

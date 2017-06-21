@@ -1,5 +1,5 @@
 <%@ page pageEncoding="GB18030"%>
-<%@ page import="javaClass.*,com.bjsxt.bbs.*"%>
+<%@ page import="javaClass.*"%>
 
 <%
 	request.setCharacterEncoding("GBK");
